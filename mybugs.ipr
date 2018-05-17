@@ -25,6 +25,9 @@
     <property name="settings.editor.selected.configurable" value="go" />
     <property name="configurable.Global.libraries.is.expanded" value="true" />
   </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
