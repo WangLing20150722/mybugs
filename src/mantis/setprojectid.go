@@ -84,18 +84,11 @@ func VerifyProjectId(doc* goquery.Document, projectid string) bool {
 	}
 
 	ret := false
-	selectFound := false
-	sel.Children().Each(func (i int,s *goquery.Selection ) {
-		if(selectFound) {
-			return
-		}
-
+	sel.Children().EachWithBreak(func (i int,s *goquery.Selection ) bool {
 		value,_ := s.Attr("value")
 		_,isselected := s.Attr("selected")
 
 		if(isselected) {
-			selectFound = true
-
 			if(value == projectid) {
 				ret = true
 			} else {
@@ -105,7 +98,11 @@ func VerifyProjectId(doc* goquery.Document, projectid string) bool {
 
 			s_projectid = value
 			s_projectName = s.Text()
+
+			return false
 		}
+
+		return true
 	})
 
 	return ret
