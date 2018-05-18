@@ -8,7 +8,7 @@ import (
 	"sync"
 )
 
-var DEBUG = true
+var DEBUG = false
 
 var instance *http.Client
 var once sync.Once

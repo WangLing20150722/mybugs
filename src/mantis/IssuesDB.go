@@ -2,15 +2,19 @@ package mantis
 
 import (
 	"container/list"
-	"os"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"os"
 )
 
-func SaveList(l *list.List,dbfile string) error {
-	os.Remove(dbfile)
+var s_dbfile = "issues.db"
 
-	db, err := gorm.Open("sqlite3", dbfile)
+func ClearList() error {
+	return os.Remove(s_dbfile)
+}
+
+func SaveList(l *list.List) error {
+	db, err := gorm.Open("sqlite3", s_dbfile)
 	if err != nil {
 		return err
 	}
@@ -24,6 +28,24 @@ func SaveList(l *list.List,dbfile string) error {
 		} else {
 			db.Save(e.Value.(*Issue))
 		}
+	}
+
+	return nil
+}
+
+func SaveDetail(detail *IssueDetail) error {
+	db, err := gorm.Open("sqlite3", s_dbfile)
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+
+	db.AutoMigrate(&IssueDetail{})
+
+	if(db.NewRecord(detail)) {
+		db.Create(detail)
+	} else {
+		db.Save(detail)
 	}
 
 	return nil

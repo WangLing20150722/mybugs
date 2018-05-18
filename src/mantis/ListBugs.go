@@ -6,31 +6,64 @@ import (
 	"net/http"
 	"github.com/PuerkitoBio/goquery"
 	"strings"
-	"time"
 	"container/list"
 	"strconv"
+	"time"
 )
 
 type Issue struct {
-	Id 		int64	`gorm:"primary_key;auto_increment:false"`
-	Level   	string	`gorm:"type:text"`
-	Summary 	string	`gorm:"type:text"`
-	Status  	string	`gorm:"type:text"`
-	Reporter 	string	`gorm:"type:text"`
-	AssignedTo 	string	`gorm:"type:text"`
-	DateSubmitted	string	`gorm:"type:text"`
-	DueDate		string	`gorm:"type:text"`
-	Updated		string	`gorm:"type:text"`
+	Id 		int64		`gorm:"primary_key;auto_increment:false"`
+	Level   	string		`gorm:"type:text"`
+	Summary 	string		`gorm:"type:text"`
+	Status  	string		`gorm:"type:text"`
+	Reporter 	string		`gorm:"type:text"`
+	AssignedTo 	string		`gorm:"type:text"`
+	DateSubmitted	string		`gorm:"type:text"`
+	DueDate		string		`gorm:"type:text"`
+	Updated		string		`gorm:"type:text"`
+	FetchTime	time.Time	`gorm:"column:page_created"`
 }
+
+var s_sort = ""
+var s_asc = false
+
 
 /**
 List All Bugs by page,sort and order.
 sort - last_updated
  */
-func ListBugs(pageoffset,pagelimited int, sort string, asc bool) (*list.List,error) {
-	client := HTTPInstance()
+func ListBugs(page int, sort string, asc bool) (*list.List,error) {
+	l := list.New()
 
-	time.Now()
+	now := time.Now()
+
+	doc,err := sortIssues(sort,asc)
+	if(err != nil) {
+		return l,err
+	}
+
+	if(page != 0) {
+		doc,err = openPage(page,sort,asc)
+	}
+	if(err != nil) {
+		return l,err
+	}
+
+	if(!parseBugList(doc,l,now)) {
+		return l,fmt.Errorf("ListBugs parseBugList %d failed",page)
+	}
+
+	return l,nil
+}
+
+
+func sortIssues( sort string, asc bool ) (* goquery.Document,error) {
+	if(s_sort == sort && asc == s_asc) {
+		//log.Printf("SortIssues already sort by %s and asc=%t",sort,asc)
+		return nil,nil
+	}
+
+	client := HTTPInstance()
 
 	var dir string
 	if(asc) {
@@ -42,7 +75,7 @@ func ListBugs(pageoffset,pagelimited int, sort string, asc bool) (*list.List,err
 	surl := fmt.Sprintf("http://mantis.tclking.com/view_all_set.php?sort=%s&dir=%s&type=2",sort,dir)
 
 	if(DEBUG) {
-		log.Printf("ListBugs pageoffset=%d pagelimited=%d url=%s\n",pageoffset,pagelimited,surl)
+		log.Printf("SortIssues url=%s\n",surl)
 	}
 	req, err := http.NewRequest("GET",surl,nil)
 	if err != nil {
@@ -51,7 +84,10 @@ func ListBugs(pageoffset,pagelimited int, sort string, asc bool) (*list.List,err
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	resp, err := client.Do(req)
-	log.Printf("ListBugs StatusCode = %d\n",resp.StatusCode)
+	if(err != nil) {
+		return nil,err
+	}
+	log.Printf("SortIssues StatusCode = %d\n",resp.StatusCode)
 	defer resp.Body.Close()
 
 	if(resp.StatusCode != http.StatusOK) {
@@ -80,21 +116,10 @@ func ListBugs(pageoffset,pagelimited int, sort string, asc bool) (*list.List,err
 		return nil,fmt.Errorf("ListBugs set order failed")
 	}
 
-	l := list.New()
-	for i:=pageoffset;i<pageoffset+pagelimited;i++ {
-		if(i!=0) {
-			doc,err = openPage(i,sort,asc)
-			if(err != nil) {
-				return l,err
-			}
-		}
+	s_sort = sort
+	s_asc = asc
 
-		if(!parseBugList(doc,l)) {
-			return l,fmt.Errorf("ListBugs parseBugList %d failed",i)
-		}
-	}
-
-	return l,nil
+	return doc,nil
 }
 
 func checkOrder(doc* goquery.Document, sort string, asc bool) bool {
@@ -140,6 +165,9 @@ func openPage(page int,sort string, asc bool) (*goquery.Document,error) {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	resp, err := client.Do(req)
+	if(err != nil) {
+		return nil,err
+	}
 	log.Printf("ListBugs openPage %d StatusCode = %d\n",page,resp.StatusCode)
 	defer resp.Body.Close()
 
@@ -172,7 +200,7 @@ func openPage(page int,sort string, asc bool) (*goquery.Document,error) {
 	return doc,nil
 }
 
-func parseBugList(doc* goquery.Document,l *list.List) bool {
+func parseBugList(doc* goquery.Document,l *list.List,now time.Time) bool {
 	sel := doc.Find("#buglist > tbody > tr")
 	if(sel.Length() <= 0) {
 		log.Printf("parseBugList error page")
@@ -192,6 +220,7 @@ func parseBugList(doc* goquery.Document,l *list.List) bool {
 		}
 
 		issue := new(Issue)
+		issue.FetchTime = now
 
 		tds.Each(func (i int,s *goquery.Selection ) {
 			class,has := s.Attr("class")
