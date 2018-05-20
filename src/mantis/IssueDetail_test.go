@@ -4,10 +4,11 @@ import (
 	"testing"
 	"mantis"
 	"log"
+	"utils"
 )
 
 func TestGetIssueDetail(t *testing.T) {
-	_,err := mantis.Login("lihui02","asdfzxcv")
+	_,err := mantis.Login(utils.CONFIG.Username,utils.CONFIG.Password)
 	log.Print("Login: ",err)
 
 	_,err = mantis.SetProjectById("0")
