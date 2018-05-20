@@ -65,6 +65,16 @@ func EachList(start, end time.Time) ([]*Issue, error) {
 	return Issues, nil
 }
 
+func List(id int64) (*Issue, error) {
+	if s_db == nil {
+		return nil, fmt.Errorf("Db not Opened")
+	}
+
+	var iss Issue
+	s_db.First(&iss, "Id = ?", id)
+	return &iss, nil
+}
+
 func SaveDetail(detail *IssueDetail) error {
 	if s_db == nil {
 		return fmt.Errorf("Db not Opened")

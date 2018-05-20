@@ -7,7 +7,7 @@ import (
 	"utils"
 )
 
-var DEBUG = true
+var DEBUG = false
 
 func RefreshListBetween(start, end time.Time, projectid string, startPage int) error {
 	var err error

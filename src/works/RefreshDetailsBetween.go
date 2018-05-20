@@ -38,7 +38,7 @@ func RefreshDetailsBetween(start, end time.Time) error {
 		return err
 	}
 
-	log.Print("RefreshDetailsBwtween %d issues found in list:", len(issues))
+	log.Printf("RefreshDetailsBwtween %d issues found in list:\n", len(issues))
 
 	for _, issue := range issues {
 
