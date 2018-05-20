@@ -38,6 +38,8 @@ func RefreshDetailsBetween(start, end time.Time) error {
 		return err
 	}
 
+	log.Print("RefreshDetailsBwtween %d issues found in list:", len(issues))
+
 	for _, issue := range issues {
 
 		var detail *mantis.IssueDetail

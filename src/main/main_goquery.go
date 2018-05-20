@@ -24,6 +24,9 @@ func main() {
 	var startPage int
 	flag.IntVar(&startPage, "startpage", 0, "begin refresh from startpage, if it`s too big, some issues may lost but if too small, more times will be wasted. default:0")
 
+	var detail bool
+	flag.BoolVar(&detail, "detail", true, "Update issue details")
+
 	flag.Parse()
 
 	var err error
@@ -49,6 +52,14 @@ func main() {
 		err = works.IssueListBetween(starttm, endtm, pid, startPage)
 		if err != nil {
 			log.Printf("List error:%v\n", err)
+			return
+		}
+	}
+
+	if detail {
+		err = works.RefreshDetailsBetween(starttm, endtm)
+		if err != nil {
+			log.Printf("Detail error:%v\n", err)
 			return
 		}
 	}
