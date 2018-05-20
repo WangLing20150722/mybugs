@@ -27,6 +27,19 @@ type Issue struct {
 var s_sort = ""
 var s_asc = false
 
+var s_statusMap = map[string]string{
+	"S": 	"SCCB Review",
+	"C":   	"Closed",
+	"A": 	"Assigned",
+	"R": 	"Ready to release",
+	"M":	"More info requested",
+	"N":	"New",
+	"F":	"Failed",
+	"P":	"Pretest",
+	"T": 	"Ready to test",
+	"D": 	"Ready to deploy",
+}
+
 
 /**
 List All Bugs by page,sort and order.
@@ -262,12 +275,19 @@ func parseBugList(doc* goquery.Document,l *list.List,now time.Time) bool {
 				break
 
 			case "column-status":
-				value,exist := s.Children().Attr("title")
-				if(!exist) {
+				value:= s.Children().Text()
+				if(value == "") {
 					html,_ := s.Html()
 					log.Printf("Error issue %d %s",i,html)
 				}
-				issue.Status = value
+				status,has := s_statusMap[value]
+				if(has) {
+					issue.Status = status
+				} else {
+					log.Printf("Error issue %d unknown status %s",i,value)
+					issue.Status = value
+				}
+
 				break
 
 			case "column-reporter":

@@ -5,6 +5,7 @@ import (
 	"flag"
 	"time"
 	"log"
+	"mantis"
 )
 
 
@@ -41,6 +42,9 @@ func main() {
 		flag.Usage()
 		return
 	}
+
+	mantis.OpenDB()
+	defer mantis.CloseDB()
 
 	if(list) {
 		err = works.IssueListBetween(starttm,endtm,pid,startPage)

@@ -5,48 +5,94 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"os"
+	"fmt"
+	"time"
 )
 
 var s_dbfile = "issues.db"
+var s_db *gorm.DB
+
+func OpenDB() error {
+	if(s_db != nil) {
+		return fmt.Errorf("DB already Openned")
+	}
+	var err error
+	s_db,err = gorm.Open("sqlite3", s_dbfile)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func CloseDB() error {
+	if(s_db != nil) {
+		return s_db.Close()
+	}
+
+	return fmt.Errorf("Db not Opened")
+}
 
 func ClearList() error {
 	return os.Remove(s_dbfile)
 }
 
 func SaveList(l *list.List) error {
-	db, err := gorm.Open("sqlite3", s_dbfile)
-	if err != nil {
-		return err
+	if(s_db == nil) {
+		return fmt.Errorf("Db not Opened")
 	}
-	defer db.Close()
 
-	db.AutoMigrate(&Issue{})
+	s_db.AutoMigrate(&Issue{})
 
 	for e := l.Front(); e != nil; e = e.Next() {
-		if(db.NewRecord(e.Value.(*Issue))){
-			db.Create(e.Value.(*Issue))
+		if(s_db.NewRecord(e.Value.(*Issue))){
+			s_db.Create(e.Value.(*Issue))
 		} else {
-			db.Save(e.Value.(*Issue))
+			s_db.Save(e.Value.(*Issue))
 		}
 	}
 
 	return nil
 }
 
-func SaveDetail(detail *IssueDetail) error {
-	db, err := gorm.Open("sqlite3", s_dbfile)
-	if err != nil {
-		return err
+func EachList(start,end time.Time) ([]*Issue,error) {
+	if(s_db == nil) {
+		return nil,fmt.Errorf("Db not Opened")
 	}
-	defer db.Close()
 
-	db.AutoMigrate(&IssueDetail{})
+	var Issues []*Issue
+	s_db.Find(&Issues,"Updated >= ? AND Updated <= ?",start.Format("2006-01-02"),end.Format("2006-01-02"))
+	return Issues,nil
+}
 
-	if(db.NewRecord(detail)) {
-		db.Create(detail)
+func SaveDetail(detail *IssueDetail) error {
+	if(s_db == nil) {
+		return fmt.Errorf("Db not Opened")
+	}
+
+	s_db.AutoMigrate(&IssueDetail{})
+
+	if(s_db.NewRecord(detail)) {
+		s_db.Create(detail)
 	} else {
-		db.Save(detail)
+		s_db.Save(detail)
 	}
 
 	return nil
 }
+
+func GetDetail(id int64) (*IssueDetail,error) {
+	if(s_db == nil) {
+		return nil,fmt.Errorf("Db not Opened")
+	}
+
+	var detail IssueDetail
+	s_db.First(&detail,"Id = ?",id)
+	if(detail.Id == id) {
+		return &detail,nil
+	} else {
+		return nil,fmt.Errorf("Issue(%d) not Found",id)
+	}
+}
+
+

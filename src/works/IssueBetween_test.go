@@ -3,6 +3,7 @@ package works
 import (
 	"testing"
 	"time"
+	"utils"
 )
 
 func TestIssueBetween(t *testing.T) {
@@ -25,7 +26,7 @@ func TestIssueBetweenOld(t *testing.T) {
 
 func TestGenrateTime(t *testing.T)  {
 	now := time.Now()
-	today,err := formatTime(now)
+	today,err := utils.FormatTime2Day(now)
 	if(err != nil) {
 		t.Fatal(err)
 	}
@@ -41,7 +42,7 @@ func TestGenrateTime(t *testing.T)  {
 	}
 
 	yestodayNow := now.AddDate(0,0,-1)
-	yestoday,err := formatTime(yestodayNow)
+	yestoday,err := utils.FormatTime2Day(yestodayNow)
 	if(err != nil) {
 		t.Fatal(err)
 	}

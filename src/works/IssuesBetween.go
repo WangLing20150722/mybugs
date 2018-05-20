@@ -13,12 +13,12 @@ func IssueListBetween(start,end time.Time,projectid string,startPage int) error 
 	var err error
 
 	var startDay,endDay time.Time
-	startDay,err = formatTime(start)
+	startDay,err = utils.FormatTime2Day(start)
 	if(err != nil) {
 		log.Print("IssueListBetween formatTime failed:", err)
 		return err
 	}
-	endDay,err = formatTime(end)
+	endDay,err = utils.FormatTime2Day(end)
 	if(err != nil) {
 		log.Print("IssueListBetween formatTime failed:", err)
 		return err
@@ -64,7 +64,7 @@ func IssueListBetween(start,end time.Time,projectid string,startPage int) error 
 		if(page == startPage /*&& page != 0 */) {
 			warning := true
 
-			today,err := formatTime(time.Now())
+			today,err := utils.FormatTime2Day(time.Now())
 			if(err == nil && today.Equal(endDay)) {
 				//结束时间是今天，无需提示
 				warning = false
@@ -104,10 +104,3 @@ func IssueListBetween(start,end time.Time,projectid string,startPage int) error 
 	return nil
 }
 
-/**
-将精确的时间，转换成mantis List页面的时间显示:
-2018-05-20 10:12:30  --> 2018-05-20
- */
-func formatTime(exact time.Time) (time.Time,error) {
-	return time.Parse("2006-01-02", exact.Format("2006-01-02"))
-}

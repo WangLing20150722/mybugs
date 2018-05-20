@@ -17,6 +17,8 @@ func HTTPInstance() (*http.Client) {
 	once.Do(func() {
 		cookieJar, _ := cookiejar.New(nil)
 		instance = &http.Client{Jar: cookieJar}
+
+		OpenDB()
 	})
 
 	return instance
