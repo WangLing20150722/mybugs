@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="605cb909-c33f-42d7-8aa5-24f7d8d0ff39" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/config.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mybugs.iws" afterPath="$PROJECT_DIR$/mybugs.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/main_goquery.go" afterPath="$PROJECT_DIR$/src/main/main_goquery.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/works/IssueBetween_test.go" afterPath="$PROJECT_DIR$/src/works/IssueBetween_test.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/works/IssuesBetween.go" afterPath="$PROJECT_DIR$/src/works/IssuesBetween.go" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,13 +25,13 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="IssueDetail.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mantis/IssueDetail.go">
+      <file leaf-file-name="IssuesBetween.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/works/IssuesBetween.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="70" column="43" lean-forward="true" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+            <state relative-caret-position="155">
+              <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="21" />
               <folding>
-                <element signature="e#16#122#0" expanded="true" />
+                <element signature="e#15#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,42 +40,54 @@
       <file leaf-file-name="main_goquery.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/main_goquery.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+            <state relative-caret-position="165">
+              <caret line="45" column="34" lean-forward="false" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
               <folding>
-                <element signature="e#14#33#0" expanded="true" />
+                <element signature="e#14#56#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IssuesBetween.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/works/IssuesBetween.go">
+      <file leaf-file-name="flag.go" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/go/src/flag/flag.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-241">
-              <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-              <folding>
-                <element signature="e#15#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="property.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/github.com/PuerkitoBio/goquery/property.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="96" column="20" lean-forward="false" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
+            <state relative-caret-position="79">
+              <caret line="522" column="4" lean-forward="false" selection-start-line="522" selection-start-column="4" selection-end-line="522" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="builtin.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/go/src/builtin/builtin.go">
+      <file leaf-file-name="ListBugs.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mantis/ListBugs.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="99">
-              <caret line="186" column="5" lean-forward="false" selection-start-line="186" selection-start-column="5" selection-end-line="186" selection-end-column="5" />
+              <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+              <folding>
+                <element signature="e#16#134#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IssueBetween_test.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/works/IssueBetween_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-25">
+              <caret line="18" column="53" lean-forward="false" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+              <folding>
+                <element signature="e#15#44#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testing.go" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/go/src/testing/testing.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="493" column="17" lean-forward="false" selection-start-line="493" selection-start-column="17" selection-end-line="493" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -80,57 +96,19 @@
       <file leaf-file-name="time.go" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/go/src/time/time.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="1042" column="5" lean-forward="false" selection-start-line="1042" selection-start-column="5" selection-end-line="1042" selection-end-column="5" />
+            <state relative-caret-position="-10215">
+              <caret line="131" column="49" lean-forward="false" selection-start-line="131" selection-start-column="46" selection-end-line="131" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IssueDetail_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mantis/IssueDetail_test.go">
+      <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-              <folding>
-                <element signature="e#21#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListBugs_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mantis/ListBugs_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding>
-                <element signature="e#21#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IssuesDB_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mantis/IssuesDB_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="80" column="26" lean-forward="true" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
-              <folding>
-                <element signature="e#21#78#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IssuesDB.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mantis/IssuesDB.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
-              <folding>
-                <element signature="e#16#120#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -146,8 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selenium-server-standalone-3</find>
-      <find>selenium-server-standalone</find>
       <find>geckodriver-</find>
       <find>sel</find>
       <find>class</find>
@@ -176,6 +152,8 @@
       <find>value</find>
       <find>for</find>
       <find>Sync</find>
+      <find>Day</find>
+      <find>startPage</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,15 +175,16 @@
         <option value="$PROJECT_DIR$/src/main/main1.go" />
         <option value="$PROJECT_DIR$/src/mantis/setprojectid.go" />
         <option value="$PROJECT_DIR$/src/mantis/httpcontainer.go" />
-        <option value="$PROJECT_DIR$/src/works/IssueBetween_test.go" />
-        <option value="$PROJECT_DIR$/src/main/main_goquery.go" />
         <option value="$PROJECT_DIR$/src/mantis/ListBugs_test.go" />
-        <option value="$PROJECT_DIR$/src/works/IssuesBetween.go" />
         <option value="$PROJECT_DIR$/src/mantis/ListBugs.go" />
         <option value="$PROJECT_DIR$/src/mantis/IssueDetail_test.go" />
         <option value="$PROJECT_DIR$/src/mantis/IssuesDB.go" />
         <option value="$PROJECT_DIR$/src/mantis/IssuesDB_test.go" />
         <option value="$PROJECT_DIR$/src/mantis/IssueDetail.go" />
+        <option value="$PROJECT_DIR$/src/utils/config.go" />
+        <option value="$PROJECT_DIR$/src/works/IssuesBetween.go" />
+        <option value="$PROJECT_DIR$/src/works/IssueBetween_test.go" />
+        <option value="$PROJECT_DIR$/src/main/main_goquery.go" />
       </list>
     </option>
   </component>
@@ -233,6 +212,24 @@
     <panes>
       <pane id="ProjectPane">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybugs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Go 1.9.2 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="mybugs" />
@@ -313,11 +310,13 @@
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.IssuesDB_test.go">
-    <configuration default="false" name="go run main_goquery.go" type="GoRunFileConfiguration" factoryName="Go Single File" temporary="true">
+  <component name="RunManager" selected="Go Application.Build main_goquery.go and run">
+    <configuration default="false" name="Build main_goquery.go and run" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="mybugs" />
       <working_directory value="$PROJECT_DIR$" />
+      <parameters value="-start 2018-04-01 -end 2018-04-30" />
       <filePath value="$PROJECT_DIR$/src/main/main_goquery.go" />
+      <kind value="FILE" />
       <method />
     </configuration>
     <configuration default="false" name="IssuesDB_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
@@ -328,28 +327,31 @@
       <filePath value="$PROJECT_DIR$/src/mantis/IssuesDB_test.go" />
       <method />
     </configuration>
-    <configuration default="false" name="IssueBetween_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+    <configuration default="false" name="TestGenrateTime in IssueBetween_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="mybugs" />
       <working_directory value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/src/works/IssueBetween_test.go" />
+      <kind value="PACKAGE" />
+      <package value="works" />
+      <pattern value="^TestGenrateTime$" />
       <method />
     </configuration>
-    <configuration default="false" name="ListBugs_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+    <configuration default="false" name="TestIssueBetween in IssueBetween_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="mybugs" />
       <working_directory value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/src/mantis/ListBugs_test.go" />
+      <kind value="PACKAGE" />
+      <package value="works" />
+      <pattern value="^TestIssueBetween$" />
       <method />
     </configuration>
-    <configuration default="false" name="IssueDetail_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+    <configuration default="false" name="TestIssueBetweenOld in IssueBetween_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="mybugs" />
       <working_directory value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/src/mantis/IssueDetail_test.go" />
+      <kind value="PACKAGE" />
+      <package value="works" />
+      <pattern value="^TestIssueBetweenOld$" />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -560,24 +562,27 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Go Single File.go run main_goquery.go" />
+      <item index="0" class="java.lang.String" itemvalue="Go Application.Build main_goquery.go and run" />
       <item index="1" class="java.lang.String" itemvalue="Go Test.IssuesDB_test.go" />
-      <item index="2" class="java.lang.String" itemvalue="Go Test.IssueBetween_test.go" />
-      <item index="3" class="java.lang.String" itemvalue="Go Test.ListBugs_test.go" />
-      <item index="4" class="java.lang.String" itemvalue="Go Test.IssueDetail_test.go" />
+      <item index="2" class="java.lang.String" itemvalue="Go Test.TestGenrateTime in IssueBetween_test.go" />
+      <item index="3" class="java.lang.String" itemvalue="Go Test.TestIssueBetween in IssueBetween_test.go" />
+      <item index="4" class="java.lang.String" itemvalue="Go Test.TestIssueBetweenOld in IssueBetween_test.go" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Go Test.IssuesDB_test.go" />
-        <item index="1" class="java.lang.String" itemvalue="Go Test.IssueDetail_test.go" />
-        <item index="2" class="java.lang.String" itemvalue="Go Single File.go run main_goquery.go" />
-        <item index="3" class="java.lang.String" itemvalue="Go Test.IssueBetween_test.go" />
-        <item index="4" class="java.lang.String" itemvalue="Go Test.ListBugs_test.go" />
+        <item index="0" class="java.lang.String" itemvalue="Go Application.Build main_goquery.go and run" />
+        <item index="1" class="java.lang.String" itemvalue="Go Test.TestIssueBetweenOld in IssueBetween_test.go" />
+        <item index="2" class="java.lang.String" itemvalue="Go Test.TestIssueBetween in IssueBetween_test.go" />
+        <item index="3" class="java.lang.String" itemvalue="Go Test.TestGenrateTime in IssueBetween_test.go" />
+        <item index="4" class="java.lang.String" itemvalue="Go Test.IssuesDB_test.go" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -608,39 +613,46 @@
       <option name="project" value="LOCAL" />
       <updated>1526648826155</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1. added issueDetail&#10;2. added FetchTime in Issue DB&#10;3. added SaveDetail">
+      <created>1526648857090</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1526648857090</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="IssueDetail_test_go - 2018.05.18 at 20h 50m 07s.xml">
-      <configuration name="IssueDetail_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetweenOld_in_IssueBetween_test_go - 2018.05.20 at 11h 09m 34s.xml">
+      <configuration name="TestIssueBetweenOld in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssueDetail_test_go - 2018.05.18 at 20h 50m 40s.xml">
-      <configuration name="IssueDetail_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetweenOld_in_IssueBetween_test_go - 2018.05.20 at 11h 10m 54s.xml">
+      <configuration name="TestIssueBetweenOld in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssueDetail_test_go - 2018.05.18 at 20h 52m 17s.xml">
-      <configuration name="IssueDetail_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetweenOld_in_IssueBetween_test_go - 2018.05.20 at 11h 19m 57s.xml">
+      <configuration name="TestIssueBetweenOld in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssueDetail_test_go - 2018.05.18 at 20h 52m 52s.xml">
-      <configuration name="IssueDetail_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetweenOld_in_IssueBetween_test_go - 2018.05.20 at 11h 20m 22s.xml">
+      <configuration name="TestIssueBetweenOld in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssueDetail_test_go - 2018.05.18 at 20h 59m 38s.xml">
-      <configuration name="IssueDetail_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetweenOld_in_IssueBetween_test_go - 2018.05.20 at 11h 21m 00s.xml">
+      <configuration name="TestIssueBetweenOld in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssueDetail_test_go - 2018.05.18 at 21h 00m 06s.xml">
-      <configuration name="IssueDetail_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetweenOld_in_IssueBetween_test_go - 2018.05.20 at 11h 21m 14s.xml">
+      <configuration name="TestIssueBetweenOld in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssuesDB_test_go - 2018.05.18 at 21h 00m 02s.xml">
-      <configuration name="IssuesDB_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetweenOld_in_IssueBetween_test_go - 2018.05.20 at 11h 45m 29s.xml">
+      <configuration name="TestIssueBetweenOld in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssuesDB_test_go - 2018.05.18 at 21h 01m 17s.xml">
-      <configuration name="IssuesDB_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetween_in_IssueBetween_test_go - 2018.05.20 at 11h 22m 16s.xml">
+      <configuration name="TestIssueBetween in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssuesDB_test_go - 2018.05.18 at 21h 02m 04s.xml">
-      <configuration name="IssuesDB_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetween_in_IssueBetween_test_go - 2018.05.20 at 11h 23m 45s.xml">
+      <configuration name="TestIssueBetween in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="IssuesDB_test_go - 2018.05.18 at 21h 04m 08s.xml">
-      <configuration name="IssuesDB_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestIssueBetween_in_IssueBetween_test_go - 2018.05.20 at 11h 39m 21s.xml">
+      <configuration name="TestIssueBetween in IssueBetween_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -663,16 +675,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5032415" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5037936" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.49675852" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47192717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5022762" sideWeight="0.49675852" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -708,66 +720,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/env.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/tebeka/selenium/remote.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="214" column="64" lean-forward="false" selection-start-line="214" selection-start-column="64" selection-end-line="214" selection-end-column="64" />
-          <folding>
-            <element signature="e#118#342#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/tebeka/selenium/selenium.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/tebeka/selenium/vendor/init.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="173" column="5" lean-forward="false" selection-start-line="173" selection-start-column="5" selection-end-line="173" selection-end-column="5" />
-          <folding>
-            <element signature="e#168#424#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/tebeka/selenium/service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1532">
-          <caret line="149" column="5" lean-forward="false" selection-start-line="149" selection-start-column="5" selection-end-line="149" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/disintegration/imaging/helpers.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/github.com/chromedp/chromedp/runner/runner.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="191" column="17" lean-forward="false" selection-start-line="191" selection-start-column="17" selection-end-line="191" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/github.com/chromedp/chromedp/chromedp.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -866,14 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/go/src/log/log.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="339" column="0" lean-forward="false" selection-start-line="339" selection-start-column="0" selection-end-line="339" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/go/src/net/http/client.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7001">
@@ -911,7 +855,7 @@
         <state relative-caret-position="240">
           <caret line="26" column="39" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="39" />
           <folding>
-            <element signature="e#16#97#0" expanded="true" />
+            <element signature="e#16#97#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -966,16 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mantis/setprojectid.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding>
-            <element signature="e#16#97#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/go/src/container/list/list.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -1000,14 +934,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/go/src/time/format.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="771" column="5" lean-forward="false" selection-start-line="771" selection-start-column="5" selection-end-line="771" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/github.com/jinzhu/gorm/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1016,22 +942,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/works/IssueBetween_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="28" />
-          <folding>
-            <element signature="e#20#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mantis/httpcontainer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="17" />
           <folding>
-            <element signature="e#16#86#0" expanded="true" />
+            <element signature="e#16#86#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1044,31 +960,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mantis/ListBugs.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" column="58" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="58" />
-          <folding>
-            <element signature="e#16#134#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mantis/ListBugs_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="15" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="e#21#59#0" expanded="true" />
+            <element signature="e#21#59#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/go/src/time/time.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="1042" column="5" lean-forward="false" selection-start-line="1042" selection-start-column="5" selection-end-line="1042" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1077,16 +975,6 @@
         <state relative-caret-position="99">
           <caret line="186" column="5" lean-forward="false" selection-start-line="186" selection-start-column="5" selection-end-line="186" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mantis/IssueDetail_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-          <folding>
-            <element signature="e#21#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1100,16 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mantis/IssuesDB_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="80" column="26" lean-forward="true" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
-          <folding>
-            <element signature="e#21#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/github.com/PuerkitoBio/goquery/property.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -1118,32 +996,162 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mantis/IssuesDB_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+          <folding>
+            <element signature="e#21#78#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mantis/IssueDetail.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="70" column="43" lean-forward="true" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+        <state relative-caret-position="-90">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#16#122#0" expanded="true" />
+            <element signature="e#16#122#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mantis/setprojectid.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#16#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mantis/IssueDetail_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding>
+            <element signature="e#21#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/time/zoneinfo.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3646">
+          <caret line="58" column="4" lean-forward="false" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/time/format.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="74" column="48" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/time/time.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10215">
+          <caret line="131" column="49" lean-forward="false" selection-start-line="131" selection-start-column="46" selection-end-line="131" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/testing/testing.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="493" column="17" lean-forward="false" selection-start-line="493" selection-start-column="17" selection-end-line="493" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mantis/ListBugs.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding>
+            <element signature="e#16#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../matrix/trunk/others/TerminalMgr/backend/src/TerminalMgrService/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../matrix/trunk/others/TerminalMgr/backend/src/TerminalMgrService/config/redis_config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-213">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/log/log.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="964">
+          <caret line="287" column="5" lean-forward="false" selection-start-line="287" selection-start-column="5" selection-end-line="287" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/flag/flag.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="522" column="4" lean-forward="false" selection-start-line="522" selection-start-column="4" selection-end-line="522" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/main_goquery.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        <state relative-caret-position="165">
+          <caret line="45" column="34" lean-forward="false" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
           <folding>
-            <element signature="e#14#33#0" expanded="true" />
+            <element signature="e#14#56#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../matrix/trunk/others/TerminalMgr/backend/src/TerminalMgrService/utils/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="34" column="20" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/works/IssuesBetween.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-241">
-          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        <state relative-caret-position="155">
+          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="21" />
           <folding>
-            <element signature="e#15#50#0" expanded="true" />
+            <element signature="e#15#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/works/IssueBetween_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="18" column="53" lean-forward="false" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+          <folding>
+            <element signature="e#15#44#0" expanded="true" />
           </folding>
         </state>
       </provider>

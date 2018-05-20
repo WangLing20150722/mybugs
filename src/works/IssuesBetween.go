@@ -4,46 +4,110 @@ import (
 	"time"
 	"mantis"
 	"log"
+	"utils"
 )
 
-func IssueBetween() error {
+var DEBUG = true
 
-	_,err := mantis.Login("lihui02","asdfzxcv")
-	log.Print("Login: ",err)
+func IssueListBetween(start,end time.Time,projectid string,startPage int) error {
+	var err error
 
-	_,err = mantis.SetProjectById("0")
-	log.Print("SetProjectById: ",err)
+	var startDay,endDay time.Time
+	startDay,err = formatTime(start)
+	if(err != nil) {
+		log.Print("IssueListBetween formatTime failed:", err)
+		return err
+	}
+	endDay,err = formatTime(end)
+	if(err != nil) {
+		log.Print("IssueListBetween formatTime failed:", err)
+		return err
+	}
+	log.Printf("IssueListBetween %s --> %s of pid=%s startPage=%d\n",startDay.Format("2006-01-02"),endDay.Format("2006-01-02"),projectid,startPage)
 
-	starttm,_ := time.Parse("2006-01-02", "2018-05-18")
-	//endtm,_ := time.Parse("2006-01-02", "2018-05-17")
+	_,err = mantis.Login(utils.CONFIG.Username,utils.CONFIG.Password)
+	if(err != nil) {
+		log.Print("IssueListBetween Login failed:",err)
+		return err
+	} else {
+		log.Println("IssueListBetween Login success")
+	}
 
-	page := 0
+	_,err = mantis.SetProjectById(projectid)
+	if(err != nil) {
+		log.Print("IssueListBetween SetProjectById failed:",err)
+		return err
+	} else {
+		log.Println("IssueListBetween SetProjectById success")
+	}
+
+	if(startPage < 0) {
+		startPage = 0
+	}
+	page := startPage
+
+	var lastId int64
+
 	for true {
 		l,err := mantis.ListBugs(page,"last_updated",false)
-		log.Print("ListBugs: ",err)
+		log.Printf("IssueListBetween ListBugs page %d,err=%v",page,err)
 		mantis.SaveList(l)
 
-		if ( true ) {
+		if ( DEBUG ) {
 			front := l.Front().Value.(*mantis.Issue)
 			back := l.Back().Value.(*mantis.Issue)
-			log.Printf("id:%d->%d update %s->%s\n",front.Id,back.Id, front.Updated,back.Updated)
+			log.Printf("	List Update: (%d)%s->(%d)%s\n",front.Id,front.Updated,back.Id,back.Updated)
 		}
 
-		updated := l.Back().Value.(*mantis.Issue).Updated
-		lasttm, err := time.Parse("2006-01-02", updated)
+		//first page
+		//page != 0是需要的，但无意义因为不存在，不加这个条件为方便构造测试用例
+		if(page == startPage /*&& page != 0 */) {
+			warning := true
+
+			today,err := formatTime(time.Now())
+			if(err == nil && today.Equal(endDay)) {
+				//结束时间是今天，无需提示
+				warning = false
+			}
+
+			if(warning) {
+				endUpdated := l.Front().Value.(*mantis.Issue).Updated
+				endtm, _ := time.Parse("2006-01-02", endUpdated)
+				if(!endtm.After(endDay)) {
+					log.Printf("You wants issues before %s but 1st got %s. Some issues may lost!\n",endDay.Format("2006-01-02"),endUpdated)
+				}
+			}
+		}
+
+		lastUpdated := l.Back().Value.(*mantis.Issue).Updated
+		lasttm, err := time.Parse("2006-01-02", lastUpdated)
 		if(err != nil) {
 			return err
 
 		}
 
-		log.Printf("Last Update=%s\n" ,lasttm.Format("2006-01-02 03:04:05 PM"))
-
-		if(lasttm.Before(starttm)) {
+		if(lasttm.Before(startDay)) {
 			break;
 		} else {
 			page++
 		}
+
+		curLastId := l.Back().Value.(*mantis.Issue).Id
+		if(curLastId == lastId) {
+			log.Printf("lastId =%d and curLastId=%d, may be the last page!\n",lastId,curLastId)
+			break
+		} else {
+			lastId = curLastId
+		}
 	}
 
 	return nil
+}
+
+/**
+将精确的时间，转换成mantis List页面的时间显示:
+2018-05-20 10:12:30  --> 2018-05-20
+ */
+func formatTime(exact time.Time) (time.Time,error) {
+	return time.Parse("2006-01-02", exact.Format("2006-01-02"))
 }
