@@ -1,9 +1,9 @@
 package mantis_test
 
 import (
-	"testing"
 	"container/list"
 	"mantis"
+	"testing"
 	"time"
 )
 
@@ -28,7 +28,7 @@ func TestSaveList(t *testing.T) {
 	l.PushBack(issue)
 
 	err := mantis.SaveList(l)
-	if(err != nil) {
+	if err != nil {
 		t.Fatal(err)
 	}
 }
@@ -64,7 +64,7 @@ func TestSaveListSameId(t *testing.T) {
 
 	mantis.ClearList()
 	err := mantis.SaveList(l)
-	if(err != nil) {
+	if err != nil {
 		t.Fatal(err)
 	}
 }

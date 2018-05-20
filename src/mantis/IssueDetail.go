@@ -1,95 +1,94 @@
 package mantis
 
 import (
-	"fmt"
-	"net/http"
-	"log"
-	"github.com/PuerkitoBio/goquery"
-	"time"
 	"encoding/json"
+	"fmt"
+	"github.com/PuerkitoBio/goquery"
+	"log"
+	"net/http"
 	"strings"
+	"time"
 )
 
-
 type IssueDetail struct {
-	Id 		int64		`gorm:"primary_key;auto_increment:false"`
-	FetchTime	time.Time	`gorm:"column:page_created"`
-	Document	string		`gorm:"type:text"`
-	History		string		`gorm:"type:text"`
+	Id        int64     `gorm:"primary_key;auto_increment:false"`
+	FetchTime time.Time `gorm:"column:page_created"`
+	Document  string    `gorm:"type:text"`
+	History   string    `gorm:"type:text"`
 }
 
 type IssueHistory struct {
-	DateModified	time.Time
-	Username	string
-	Field		string
-	Change		string
+	DateModified time.Time
+	Username     string
+	Field        string
+	Change       string
 }
 
-func GetIssueDetail(id int64) (*IssueDetail,error) {
+func GetIssueDetail(id int64) (*IssueDetail, error) {
 	client := HTTPInstance()
 
-	surl := fmt.Sprintf(`http://mantis.tclking.com/view.php?id=%d`,id)
+	surl := fmt.Sprintf(`http://mantis.tclking.com/view.php?id=%d`, id)
 
-	if(DEBUG) {
-		log.Printf("GetIssueDetail id=%d url=%s\n",id,surl)
+	if DEBUG {
+		log.Printf("GetIssueDetail id=%d url=%s\n", id, surl)
 	}
 
-	req, err := http.NewRequest("GET",surl,nil)
+	req, err := http.NewRequest("GET", surl, nil)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	now := time.Now()
 	resp, err := client.Do(req)
-	if(err != nil) {
-		return nil,err
+	if err != nil {
+		return nil, err
 	}
-	log.Printf("GetIssueDetail id=%d StatusCode = %d\n",id,resp.StatusCode)
+	log.Printf("GetIssueDetail id=%d StatusCode = %d\n", id, resp.StatusCode)
 	defer resp.Body.Close()
 
-	if(resp.StatusCode != http.StatusOK) {
-		return nil,fmt.Errorf("GetIssueDetail id=%d StatusCode = %d\n",id,resp.StatusCode)
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("GetIssueDetail id=%d StatusCode = %d\n", id, resp.StatusCode)
 	}
 
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
 
-	if(DEBUG) {
-		log.Printf("GetIssueDetail id %d Response:\n",id)
+	if DEBUG {
+		log.Printf("GetIssueDetail id %d Response:\n", id)
 		log.Println(doc.Html())
 	}
 
 	sel := doc.Find("#history_open > table > tbody > tr")
-	if(sel.Length() <= 0) {
-		return nil,fmt.Errorf("GetIssueDetail error page,can not find history_open")
+	if sel.Length() <= 0 {
+		return nil, fmt.Errorf("GetIssueDetail error page,can not find history_open")
 	}
 
 	issueDetail := new(IssueDetail)
-	issueDetail.Document,_ = doc.Html()
+	issueDetail.Document, _ = doc.Html()
 	issueDetail.FetchTime = now
 	issueDetail.Id = id
 
 	var historys []*IssueHistory
 
-	sel.Each(func (i int,s *goquery.Selection ) {
+	sel.Each(func(i int, s *goquery.Selection) {
 		tds := s.Find("td")
-		if(tds.Length() <= 0) {
-			log.Printf("Find td %d error",i)
+		if tds.Length() <= 0 {
+			log.Printf("Find td %d error", i)
 			return
 		}
 
 		history := new(IssueHistory)
 
-		tds.Each(func (i int,s *goquery.Selection ) {
-			switch(i) {
-			case 0://Date Modified
+		tds.Each(func(i int, s *goquery.Selection) {
+			switch i {
+			case 0: //Date Modified
 				value := s.Text()
-				if(value == "") {
-					html,_ := s.Html()
-					log.Printf("Error Date Modified 1 %d %s",i,html)
+				if value == "" {
+					html, _ := s.Html()
+					log.Printf("Error Date Modified 1 %d %s", i, html)
 				}
 				value = strings.Replace(value, " ", "", -1)
 				value = strings.Replace(value, "\n", "", -1)
@@ -97,16 +96,16 @@ func GetIssueDetail(id int64) (*IssueDetail,error) {
 
 				var err error
 				history.DateModified, err = time.Parse("2006-01-0215:04", value)
-				if(err != nil) {
-					log.Printf("Error Date Modified 1 %d [%s] %s",i,value,err)
+				if err != nil {
+					log.Printf("Error Date Modified 1 %d [%s] %s", i, value, err)
 				}
 				break
 
-			case 1://Username
+			case 1: //Username
 				value := s.Children().Text()
-				if(value == "") {
-					html,_ := s.Html()
-					log.Printf("Error Username %d %s",i,html)
+				if value == "" {
+					html, _ := s.Html()
+					log.Printf("Error Username %d %s", i, html)
 				}
 				value = strings.Replace(value, " ", "", -1)
 				value = strings.Replace(value, "\n", "", -1)
@@ -114,11 +113,11 @@ func GetIssueDetail(id int64) (*IssueDetail,error) {
 				history.Username = value
 				break
 
-			case 2://Field
+			case 2: //Field
 				value := s.Text()
-				if(value == "") {
-					html,_ := s.Html()
-					log.Printf("Error Field %d %s",i,html)
+				if value == "" {
+					html, _ := s.Html()
+					log.Printf("Error Field %d %s", i, html)
 				}
 				value = strings.Replace(value, " ", "", -1)
 				value = strings.Replace(value, "\n", "", -1)
@@ -126,11 +125,11 @@ func GetIssueDetail(id int64) (*IssueDetail,error) {
 				history.Field = value
 				break
 
-			case 3://Change
+			case 3: //Change
 				value := s.Text()
-				if(value == "") {
-					html,_ := s.Html()
-					log.Printf("Error Change %d %s",i,html)
+				if value == "" {
+					html, _ := s.Html()
+					log.Printf("Error Change %d %s", i, html)
 				}
 				value = strings.Replace(value, " ", "", -1)
 				value = strings.Replace(value, "\n", "", -1)
@@ -138,17 +137,17 @@ func GetIssueDetail(id int64) (*IssueDetail,error) {
 				history.Change = value
 				break
 			}
-		});
+		})
 
-		historys = append(historys,history)
+		historys = append(historys, history)
 	})
 
-	b,err := json.Marshal(historys)
-	if(err != nil) {
-		return nil,err
+	b, err := json.Marshal(historys)
+	if err != nil {
+		return nil, err
 	}
 
 	issueDetail.History = string(b[:])
 
-	return issueDetail,nil
+	return issueDetail, nil
 }

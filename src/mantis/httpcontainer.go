@@ -1,10 +1,10 @@
 package mantis
 
 import (
+	"log"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
-	"log"
 	"sync"
 )
 
@@ -13,7 +13,7 @@ var DEBUG = false
 var instance *http.Client
 var once sync.Once
 
-func HTTPInstance() (*http.Client) {
+func HTTPInstance() *http.Client {
 	once.Do(func() {
 		cookieJar, _ := cookiejar.New(nil)
 		instance = &http.Client{Jar: cookieJar}
@@ -27,9 +27,9 @@ func HTTPInstance() (*http.Client) {
 func DumpCookies() {
 	client := HTTPInstance()
 
-	curl,err := url.Parse("http://mantis.tclking.com/")
-	if(err != nil) {
-		log.Fatalf("url.Parse failed %s\n",err)
+	curl, err := url.Parse("http://mantis.tclking.com/")
+	if err != nil {
+		log.Fatalf("url.Parse failed %s\n", err)
 		return
 	}
 
@@ -39,4 +39,3 @@ func DumpCookies() {
 		log.Print(cookie)
 	}
 }
-

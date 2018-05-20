@@ -1,8 +1,8 @@
 package utils
 
 type CONFIG_S struct {
-	Username	string
-	Password	string
+	Username string
+	Password string
 }
 
 var CONFIG CONFIG_S
