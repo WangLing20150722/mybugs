@@ -8,7 +8,7 @@ import (
 func TestIssueBetween(t *testing.T) {
 	today := time.Now()
 	yesterday := today.AddDate(0,0,-1)
-	err := IssueListBetween(yesterday,today,"0",-1)
+	err := IssueListBetween(yesterday,today,"0",-1,5)
 	if(err != nil) {
 		t.Fatal(err)
 	}
@@ -17,7 +17,7 @@ func TestIssueBetween(t *testing.T) {
 func TestIssueBetweenOld(t *testing.T) {
 	startday,_ := time.Parse("2006-01-02", "2018-04-01")
 	endday,_ := time.Parse("2006-01-02", "2018-05-08")
-	err := IssueListBetween(startday,endday,"565",-1)
+	err := IssueListBetween(startday,endday,"565",-1,0)
 	if(err != nil) {
 		t.Fatal(err)
 	}
