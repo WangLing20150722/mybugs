@@ -9,7 +9,7 @@ import (
 
 var DEBUG = true
 
-func IssueListBetween(start, end time.Time, projectid string, startPage int) error {
+func RefreshListBetween(start, end time.Time, projectid string, startPage int) error {
 	var err error
 
 	var startDay, endDay time.Time

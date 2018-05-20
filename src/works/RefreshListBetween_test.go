@@ -6,19 +6,19 @@ import (
 	"utils"
 )
 
-func TestIssueBetween(t *testing.T) {
+func TestRefreshListBetween(t *testing.T) {
 	today := time.Now()
 	yesterday := today.AddDate(0, 0, -1)
-	err := IssueListBetween(yesterday, today, "0", -1)
+	err := RefreshListBetween(yesterday, today, "0", -1)
 	if err != nil {
 		t.Fatal(err)
 	}
 }
 
-func TestIssueBetweenOld(t *testing.T) {
+func TestRefreshListBetweenOld(t *testing.T) {
 	startday, _ := time.Parse("2006-01-02", "2018-04-01")
 	endday, _ := time.Parse("2006-01-02", "2018-05-08")
-	err := IssueListBetween(startday, endday, "565", -1)
+	err := RefreshListBetween(startday, endday, "565", -1)
 	if err != nil {
 		t.Fatal(err)
 	}

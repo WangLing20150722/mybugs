@@ -49,7 +49,7 @@ func main() {
 	defer mantis.CloseDB()
 
 	if list {
-		err = works.IssueListBetween(starttm, endtm, pid, startPage)
+		err = works.RefreshListBetween(starttm, endtm, pid, startPage)
 		if err != nil {
 			log.Printf("List error:%v\n", err)
 			return
