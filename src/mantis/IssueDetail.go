@@ -13,7 +13,6 @@ import (
 type IssueDetail struct {
 	Id        int64     `gorm:"primary_key;auto_increment:false"`
 	FetchTime time.Time `gorm:"column:page_created"`
-	Document  string    `gorm:"type:text"`
 	History   string    `gorm:"type:text"`
 }
 
@@ -67,7 +66,6 @@ func GetIssueDetail(id int64) (*IssueDetail, error) {
 	}
 
 	issueDetail := new(IssueDetail)
-	issueDetail.Document, _ = doc.Html()
 	issueDetail.FetchTime = now
 	issueDetail.Id = id
 
