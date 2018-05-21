@@ -38,6 +38,12 @@ func main() {
 	var outfile string
 	flag.StringVar(&outfile, "output", "issues.xlsx", "Output excel file for identify")
 
+	var username string
+	flag.StringVar(&username, "username", "", "Username of bug system(mantis)")
+
+	var password string
+	flag.StringVar(&password, "password", "", "Password of bug system(mantis)")
+
 	flag.Parse()
 
 	var err error
@@ -56,16 +62,27 @@ func main() {
 		return
 	}
 
+	if listAction || detailAction {
+		if username == "" || password == "" {
+			log.Println("no username or password assign")
+			flag.Usage()
+			return
+		}
+
+		utils.CONFIG.Username = username
+		utils.CONFIG.Password = password
+	}
+
 	var l *list.List
 	if identifyAction {
 		if ownerFile == "" {
-			log.Printf("Error -owner-config is must when 'identify'\n")
+			log.Println("Error -owner-config is must when 'identify'")
 			flag.Usage()
 			return
 		} else {
 			l = utils.ReadNameList(ownerFile)
 			if l == nil {
-				log.Printf("Error -owner-config parse error, it should be a json string file\n")
+				log.Println("Error -owner-config parse error, it should be a json string file")
 				return
 			}
 		}
@@ -108,5 +125,5 @@ func main() {
 		}
 	}
 
-	log.Printf("Done!")
+	log.Println("Done!")
 }
