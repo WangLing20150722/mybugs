@@ -65,12 +65,18 @@ func RefreshDetailsBetween(start, end time.Time) error {
 }
 
 func doRefreshDetail(id int64) error {
-	detail, err := mantis.GetIssueDetail(id)
+	var err error
+	for i := 0; i < 3; i++ {
+		var detail *mantis.IssueDetail
+		detail, err = mantis.GetIssueDetail(id)
 
-	if err != nil {
-		log.Printf("doRefreshDetail failed:%v\n", err)
-		return err
+		if err != nil {
+			log.Printf("doRefreshDetail failed:%v\n", err)
+			continue
+		}
+		mantis.SaveDetail(detail)
+		return nil
 	}
-	mantis.SaveDetail(detail)
-	return nil
+
+	return err
 }

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="605cb909-c33f-42d7-8aa5-24f7d8d0ff39" name="Default" comment="added IdentifyOwnerBetween and test">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/owners.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/OwnerList.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/OwnerList_test.go" />
+    <list default="true" id="605cb909-c33f-42d7-8aa5-24f7d8d0ff39" name="Default" comment="added identify in main&#10;added onwer list for tv app">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mybugs.iws" afterPath="$PROJECT_DIR$/mybugs.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/main_goquery.go" afterPath="$PROJECT_DIR$/src/main/main_goquery.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/works/RefreshListBetween.go" afterPath="$PROJECT_DIR$/src/works/RefreshListBetween.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/works/RefreshDetailsBetween.go" afterPath="$PROJECT_DIR$/src/works/RefreshDetailsBetween.go" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,13 +23,37 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RefreshListBetween.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RefreshListBetween.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/works/RefreshListBetween.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="244">
+              <caret line="60" column="19" lean-forward="false" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
               <folding>
                 <element signature="e#15#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RefreshDetailsBetween.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/works/RefreshDetailsBetween.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="80" column="18" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+              <folding>
+                <element signature="e#15#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IssueDetail.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mantis/IssueDetail.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="43" />
+              <folding>
+                <element signature="e#16#122#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/main_goquery.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="142">
-              <caret line="58" column="25" lean-forward="true" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
+              <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
               <folding>
                 <element signature="e#14#93#0" expanded="true" />
               </folding>
@@ -78,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/src/utils/OwnerList.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+              <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding>
                 <element signature="e#15#87#0" expanded="true" />
               </folding>
@@ -89,7 +110,7 @@
       <file leaf-file-name="IdentifyOwnerBetween.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/works/IdentifyOwnerBetween.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="-1493">
               <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
               <folding>
                 <element signature="e#15#122#0" expanded="true" />
@@ -98,12 +119,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testing.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/go/src/testing/testing.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="710" column="0" lean-forward="false" selection-start-line="710" selection-start-column="0" selection-end-line="710" selection-end-column="0" />
-              <folding />
+      <file leaf-file-name="Readme.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="90">
+                <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -116,26 +140,6 @@
               <folding>
                 <element signature="e#20#57#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="panic.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/go/src/runtime/panic.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="490" column="0" lean-forward="false" selection-start-line="490" selection-start-column="0" selection-end-line="490" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/go/src/container/list/list.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-348">
-              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -178,9 +182,9 @@
       <find>Once</find>
       <find>Each</find>
       <find>error page,can not find history_open</find>
-      <find>doRefreshDetail failed</find>
       <find>174766</find>
       <find>=&gt;</find>
+      <find>doRefreshDetail failed</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -213,7 +217,6 @@
         <option value="$PROJECT_DIR$/src/mantis/IssueDetail_test.go" />
         <option value="$PROJECT_DIR$/src/works/RefreshListBetween_test.go" />
         <option value="$PROJECT_DIR$/src/works/IdentifyOwner.go" />
-        <option value="$PROJECT_DIR$/src/works/RefreshDetailsBetween.go" />
         <option value="$PROJECT_DIR$/src/works/IdentifyOwner_test.go" />
         <option value="$PROJECT_DIR$/src/mantis/IssuesDB.go" />
         <option value="$PROJECT_DIR$/src/utils/Write2Excel.go" />
@@ -226,6 +229,8 @@
         <option value="$PROJECT_DIR$/src/utils/OwnerList.go" />
         <option value="$PROJECT_DIR$/src/main/main_goquery.go" />
         <option value="$PROJECT_DIR$/src/works/RefreshListBetween.go" />
+        <option value="$PROJECT_DIR$/src/works/RefreshDetailsBetween.go" />
+        <option value="$PROJECT_DIR$/Readme.md" />
       </list>
     </option>
   </component>
@@ -262,24 +267,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mybugs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mybugs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mybugs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="works" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -674,7 +661,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526821046427</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added identify in main&#10;added onwer list for tv app">
+      <created>1526873861940</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1526873861940</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -729,11 +723,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5032415" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42336875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42336875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5022762" sideWeight="0.49675852" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25364667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -761,7 +755,8 @@
     <MESSAGE value="rename" />
     <MESSAGE value="added IdentifyOwnerBetween and test" />
     <MESSAGE value="remove document in IssueDetail" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove document in IssueDetail" />
+    <MESSAGE value="added identify in main&#10;added onwer list for tv app" />
+    <option name="LAST_COMMIT_MESSAGE" value="added identify in main&#10;added onwer list for tv app" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -787,14 +782,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/go/src/os/file_unix.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="267" column="5" lean-forward="false" selection-start-line="267" selection-start-column="5" selection-end-line="267" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/go/src/builtin/builtin.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -1029,24 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mantis/IssueDetail.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="67" column="39" lean-forward="false" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
-          <folding>
-            <element signature="e#16#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/works/RefreshDetailsBetween.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mantis/ListBugs.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1160,19 +1129,9 @@
     <entry file="file://$PROJECT_DIR$/src/utils/OwnerList.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding>
             <element signature="e#15#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/works/IdentifyOwnerBetween.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="e#15#122#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1200,7 +1159,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/main_goquery.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
-          <caret line="58" column="25" lean-forward="true" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
+          <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
           <folding>
             <element signature="e#14#93#0" expanded="true" />
           </folding>
@@ -1209,11 +1168,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/works/RefreshListBetween.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="244">
+          <caret line="60" column="19" lean-forward="false" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
           <folding>
             <element signature="e#15#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mantis/IssueDetail.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="43" />
+          <folding>
+            <element signature="e#16#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/works/RefreshDetailsBetween.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="80" column="18" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+          <folding>
+            <element signature="e#15#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/works/IdentifyOwnerBetween.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1493">
+          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#15#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="90">
+            <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
