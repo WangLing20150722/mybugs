@@ -3,6 +3,7 @@ package works
 import (
 	"container/list"
 	"github.com/360EntSecGroup-Skylar/excelize"
+	"log"
 	"strconv"
 )
 
@@ -14,26 +15,32 @@ func IssueOwnerList2Excel(l *list.List, file string) error {
 	xlsx.SetActiveSheet(index)
 
 	xlsx.SetCellValue(defaultSheetName, "A1", "ID")
-	xlsx.SetCellValue(defaultSheetName, "B1", "Level")
-	xlsx.SetCellValue(defaultSheetName, "C1", "Summary")
-	xlsx.SetCellValue(defaultSheetName, "D1", "Status")
-	xlsx.SetCellValue(defaultSheetName, "E1", "LastModify")
-	xlsx.SetCellValue(defaultSheetName, "F1", "LastAssignOutTo")
-	xlsx.SetCellValue(defaultSheetName, "G1", "LastFix")
+	xlsx.SetCellValue(defaultSheetName, "B1", "Project")
+	xlsx.SetCellValue(defaultSheetName, "C1", "Level")
+	xlsx.SetCellValue(defaultSheetName, "D1", "Summary")
+	xlsx.SetCellValue(defaultSheetName, "E1", "Status")
+	xlsx.SetCellValue(defaultSheetName, "F1", "LastModify")
+	xlsx.SetCellValue(defaultSheetName, "G1", "LastAssignOutTo")
+	xlsx.SetCellValue(defaultSheetName, "H1", "LastFix")
 
 	line := 2
 	for iter := l.Front(); iter != nil; iter = iter.Next() {
 		issue := iter.Value.(*IssueOwner)
 
+		if DEBUG {
+			log.Print(issue)
+		}
+
 		xlsx.SetCellValue(defaultSheetName, "A"+strconv.Itoa(line), issue.Id)
 		xlsx.SetCellHyperLink(defaultSheetName, "A"+strconv.Itoa(line), "http://mantis.tclking.com/view.php?id="+strconv.FormatInt(issue.Id, 10), "External")
 
-		xlsx.SetCellValue(defaultSheetName, "B"+strconv.Itoa(line), issue.Level)
-		xlsx.SetCellValue(defaultSheetName, "C"+strconv.Itoa(line), issue.Summary)
-		xlsx.SetCellValue(defaultSheetName, "D"+strconv.Itoa(line), issue.Status)
-		xlsx.SetCellValue(defaultSheetName, "E"+strconv.Itoa(line), issue.LastModify)
-		xlsx.SetCellValue(defaultSheetName, "F"+strconv.Itoa(line), issue.LastAssignOutTo)
-		xlsx.SetCellValue(defaultSheetName, "G"+strconv.Itoa(line), issue.LastFix)
+		xlsx.SetCellValue(defaultSheetName, "B"+strconv.Itoa(line), issue.Project)
+		xlsx.SetCellValue(defaultSheetName, "C"+strconv.Itoa(line), issue.Level)
+		xlsx.SetCellValue(defaultSheetName, "D"+strconv.Itoa(line), issue.Summary)
+		xlsx.SetCellValue(defaultSheetName, "E"+strconv.Itoa(line), issue.Status)
+		xlsx.SetCellValue(defaultSheetName, "F"+strconv.Itoa(line), issue.LastModify)
+		xlsx.SetCellValue(defaultSheetName, "G"+strconv.Itoa(line), issue.LastAssignOutTo)
+		xlsx.SetCellValue(defaultSheetName, "H"+strconv.Itoa(line), issue.LastFix)
 
 		line++
 	}

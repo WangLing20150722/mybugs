@@ -14,6 +14,7 @@ import (
 
 type IssueOwner struct {
 	Id              int64
+	Project         string
 	Level           string
 	Summary         string
 	Status          string
@@ -80,6 +81,7 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 	} else {
 		owner := new(IssueOwner)
 		owner.Id = issue.Id
+		owner.Project = detail.Project
 		owner.Level = issue.Level
 		owner.Status = issue.Status
 		owner.Summary = issue.Summary

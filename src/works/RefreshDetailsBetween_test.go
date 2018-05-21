@@ -1,10 +1,10 @@
-package works_test
+package works
 
 import (
 	"mantis"
 	"testing"
 	"time"
-	"works"
+	"utils"
 )
 
 func TestRefreshDetailsBetweenOld(t *testing.T) {
@@ -13,7 +13,7 @@ func TestRefreshDetailsBetweenOld(t *testing.T) {
 
 	startday, _ := time.Parse("2006-01-02", "2018-04-01")
 	endday, _ := time.Parse("2006-01-02", "2018-04-02")
-	works.RefreshDetailsBetween(startday, endday, false)
+	RefreshDetailsBetween(startday, endday, false)
 }
 
 func TestRefreshDetailsBetweenOldForce(t *testing.T) {
@@ -22,5 +22,17 @@ func TestRefreshDetailsBetweenOldForce(t *testing.T) {
 
 	startday, _ := time.Parse("2006-01-02", "2018-04-01")
 	endday, _ := time.Parse("2006-01-02", "2018-04-02")
-	works.RefreshDetailsBetween(startday, endday, true)
+	RefreshDetailsBetween(startday, endday, true)
+}
+
+func TestRefreshDetailsOne(t *testing.T) {
+	if !mantis.CheckLogin(nil) {
+		_, err := mantis.Login(utils.CONFIG.Username, utils.CONFIG.Password)
+		if err != nil {
+			t.Logf("RefreshDetailsBetween Login failed %v\n", err)
+			t.Fail()
+		}
+	}
+
+	doRefreshDetail(174082)
 }

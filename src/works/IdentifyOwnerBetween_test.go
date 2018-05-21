@@ -55,6 +55,9 @@ func doTestIdentifyOwnerOne(t *testing.T, id int64, LastModify, LastAssignOutTo,
 	if err != nil {
 		t.Fatal(err)
 	}
+
+	t.Log(owner)
+
 	if owner.Id != id {
 		t.Fatal("id error ", id, owner.Id)
 	}
