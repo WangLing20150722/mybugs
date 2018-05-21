@@ -71,7 +71,11 @@ func main() {
 		}
 	}
 
-	mantis.OpenDB()
+	err = mantis.OpenDB()
+	if err != nil {
+		log.Printf("OpenDB error:%v\n", err)
+		return
+	}
 	defer mantis.CloseDB()
 
 	if listAction {
@@ -103,4 +107,6 @@ func main() {
 			return
 		}
 	}
+
+	log.Printf("Done!")
 }

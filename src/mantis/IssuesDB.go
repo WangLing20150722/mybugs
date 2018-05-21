@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"log"
 	"os"
 	"time"
 )
@@ -26,8 +27,12 @@ func OpenDB() error {
 }
 
 func CloseDB() error {
+	log.Print("CloseDB")
+
 	if s_db != nil {
-		return s_db.Close()
+		db := s_db
+		s_db = nil
+		return db.Close()
 	}
 
 	return fmt.Errorf("Db not Opened")
