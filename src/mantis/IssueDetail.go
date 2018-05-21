@@ -14,6 +14,7 @@ type IssueDetail struct {
 	Id        int64     `gorm:"primary_key;auto_increment:false"`
 	FetchTime time.Time `gorm:"column:page_created"`
 	History   string    `gorm:"type:text"`
+	Project   string    `gorm:"type:text"`
 }
 
 type IssueHistory struct {
@@ -141,11 +142,18 @@ func GetIssueDetail(id int64) (*IssueDetail, error) {
 	})
 
 	b, err := json.Marshal(historys)
-	if err != nil {
-		return nil, err
+	if err == nil {
+		issueDetail.History = string(b[:])
+	} else {
+		log.Printf("GetIssueDetail Marshal historys error:%v\n", err)
 	}
 
-	issueDetail.History = string(b[:])
+	projectSel := doc.Find("#view-issue-details > table > tbody > tr.bug-header-data > td.bug-project")
+	if projectSel.Length() > 0 {
+		issueDetail.Project = projectSel.Text()
+	} else {
+		log.Printf("GetIssueDetail Marshal historys error:%v\n", err)
+	}
 
 	return issueDetail, nil
 }

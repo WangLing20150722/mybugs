@@ -7,7 +7,7 @@ import (
 	"utils"
 )
 
-func RefreshDetailsBetween(start, end time.Time) error {
+func RefreshDetailsBetween(start, end time.Time, forceRefresh bool) error {
 	var err error
 
 	var startDay, endDay time.Time
@@ -42,20 +42,25 @@ func RefreshDetailsBetween(start, end time.Time) error {
 
 	for i, issue := range issues {
 
-		var detail *mantis.IssueDetail
-		detail, err = mantis.GetDetail(issue.Id)
-		if err != nil {
-			log.Printf("(%d/%d)Issue [%d] Updated at %s no details, do Refresh", i, len(issues), issue.Id, issue.Updated)
+		if forceRefresh {
+			log.Printf("(%d/%d)Issue [%d] Updated at %s forceRefresh, do Refresh", i, len(issues), issue.Id, issue.Updated)
 			doRefreshDetail(issue.Id)
 		} else {
-			ftday, _ := utils.FormatTime2Day(detail.FetchTime)
-			updateTm, _ := time.Parse("2006-01-02", issue.Updated)
-
-			if !ftday.After(updateTm) {
-				log.Printf("(%d/%d)Issue [%d] Updated at %s Refreshed at %s, do Refresh\n", i, len(issues), issue.Id, issue.Updated, ftday.Format("2006-01-02"))
+			var detail *mantis.IssueDetail
+			detail, err = mantis.GetDetail(issue.Id)
+			if err != nil {
+				log.Printf("(%d/%d)Issue [%d] Updated at %s no details, do Refresh", i, len(issues), issue.Id, issue.Updated)
 				doRefreshDetail(issue.Id)
 			} else {
-				log.Printf("(%d/%d)Issue [%d] Updated at %s Refreshed at %s, will not Refresh\n", i, len(issues), issue.Id, issue.Updated, ftday.Format("2006-01-02"))
+				ftday, _ := utils.FormatTime2Day(detail.FetchTime)
+				updateTm, _ := time.Parse("2006-01-02", issue.Updated)
+
+				if !ftday.After(updateTm) {
+					log.Printf("(%d/%d)Issue [%d] Updated at %s Refreshed at %s, do Refresh\n", i, len(issues), issue.Id, issue.Updated, ftday.Format("2006-01-02"))
+					doRefreshDetail(issue.Id)
+				} else {
+					log.Printf("(%d/%d)Issue [%d] Updated at %s Refreshed at %s, will not Refresh\n", i, len(issues), issue.Id, issue.Updated, ftday.Format("2006-01-02"))
+				}
 			}
 		}
 	}

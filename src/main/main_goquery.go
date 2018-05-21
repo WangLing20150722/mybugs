@@ -44,6 +44,9 @@ func main() {
 	var password string
 	flag.StringVar(&password, "password", "", "Password of bug system(mantis)")
 
+	var forceRefresh bool
+	flag.BoolVar(&forceRefresh, "force-refresh", false, "Force to refresh details")
+
 	flag.Parse()
 
 	var err error
@@ -104,7 +107,7 @@ func main() {
 	}
 
 	if detailAction {
-		err = works.RefreshDetailsBetween(starttm, endtm)
+		err = works.RefreshDetailsBetween(starttm, endtm, forceRefresh)
 		if err != nil {
 			log.Printf("Detail error:%v\n", err)
 			return
