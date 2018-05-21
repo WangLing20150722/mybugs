@@ -53,11 +53,9 @@ func RefreshListBetween(start, end time.Time, projectid string, startPage int) e
 		log.Printf("IssueListBetween ListBugs page %d,err=%v", page, err)
 		mantis.SaveList(l)
 
-		if DEBUG {
-			front := l.Front().Value.(*mantis.Issue)
-			back := l.Back().Value.(*mantis.Issue)
-			log.Printf("	List Update: (%d)%s->(%d)%s\n", front.Id, front.Updated, back.Id, back.Updated)
-		}
+		front := l.Front().Value.(*mantis.Issue)
+		back := l.Back().Value.(*mantis.Issue)
+		log.Printf("	List Update: (%d)%s->(%d)%s\n", front.Id, front.Updated, back.Id, back.Updated)
 
 		//first page
 		//page != 0是需要的，但无意义因为不存在，不加这个条件为方便构造测试用例
