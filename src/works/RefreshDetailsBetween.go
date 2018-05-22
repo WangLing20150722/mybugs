@@ -58,6 +58,9 @@ func RefreshDetailsBetween(start, end time.Time, forceRefresh bool) error {
 				if !ftday.After(updateTm) {
 					log.Printf("(%d/%d)Issue [%d] Updated at %s Refreshed at %s, do Refresh\n", i, len(issues), issue.Id, issue.Updated, ftday.Format("2006-01-02"))
 					doRefreshDetail(issue.Id)
+				} else if detail.FetchTime.IsZero() || detail.History == "" || detail.Project == "" {
+					log.Printf("(%d/%d)Issue [%d] detail not complted, do Refresh\n", i, len(issues), issue.Id)
+					doRefreshDetail(issue.Id)
 				} else {
 					log.Printf("(%d/%d)Issue [%d] Updated at %s Refreshed at %s, will not Refresh\n", i, len(issues), issue.Id, issue.Updated, ftday.Format("2006-01-02"))
 				}
