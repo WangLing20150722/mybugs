@@ -21,6 +21,8 @@ type IssueOwner struct {
 	LastModify      string
 	LastAssignOutTo string
 	LastFix         string
+	InTime          time.Time //首次分入时间
+	OutTime         time.Time //分出或者解决时间
 }
 
 func IdentifyOwnerBetween(start, end time.Time, shortOnwers *list.List) (*list.List, error) {
@@ -93,7 +95,7 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 		var history []mantis.IssueHistory
 		err = json.Unmarshal([]byte(detail.History), &history)
 		if err != nil {
-			err = fmt.Errorf("Issue [%d] History error:", issue.Id, detail.History)
+			err = fmt.Errorf("Issue [%d] History error: %s", issue.Id, detail.History)
 			log.Print(err)
 			return nil, err
 		}
@@ -116,15 +118,19 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 
 				match := changeReg.FindStringSubmatch(modify.Change)
 				if len(match) < 2 {
-					log.Printf("Issue [%d] History error:", issue.Id, detail.History)
+					log.Printf("Issue [%d] History error: %s", issue.Id, detail.History)
 				} else {
 					newOwner := match[1]
 
 					if isInOwners(shortOnwers, newOwner) { //分入
 						owner.LastAssignOutTo = ""
+						if owner.InTime.IsZero() {
+							owner.InTime = modify.DateModified
+						}
 					} else { //分出
 						if owner.LastAssignOutTo == "" { //只有在分入状态才分出
 							owner.LastAssignOutTo = newOwner
+							owner.OutTime = modify.DateModified
 						}
 					}
 
@@ -143,6 +149,11 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 				} else {
 					if match[1] == "Readytorelease" || match[1] == "SCCBReview" {
 						owner.LastFix = modify.Username
+
+						//是组内人员解决的Bug
+						if isInOwners(shortOnwers, modify.Username) {
+							owner.OutTime = modify.DateModified
+						}
 					}
 				}
 			}

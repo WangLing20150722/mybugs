@@ -35,4 +35,11 @@ func TestRefreshDetailsOne(t *testing.T) {
 	}
 
 	doRefreshDetail(174082)
+	doRefreshDetail(170157)
+	doRefreshDetail(164679)
+	doRefreshDetail(170266)
+	doRefreshDetail(166842)
+	doRefreshDetail(173531)
+	doRefreshDetail(174374)
+	doRefreshDetail(165043)
 }
