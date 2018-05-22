@@ -66,14 +66,16 @@ func main() {
 	}
 
 	if listAction || detailAction {
-		if username == "" || password == "" {
-			log.Println("no username or password assign")
-			flag.Usage()
-			return
+		if username == "" || password == "" { //没有指定用户名密码，调试环境下不报错
+			if utils.CONFIG.Username == "" || utils.CONFIG.Password == "" {
+				log.Println("no username or password assign")
+				flag.Usage()
+				return
+			}
+		} else { //指定了用户名密码，优先使用命令行的
+			utils.CONFIG.Username = username
+			utils.CONFIG.Password = password
 		}
-
-		utils.CONFIG.Username = username
-		utils.CONFIG.Password = password
 	}
 
 	var l *list.List
