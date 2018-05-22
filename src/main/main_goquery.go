@@ -10,6 +10,11 @@ import (
 	"works"
 )
 
+var (
+	Version = ""
+	Compile = ""
+)
+
 func main() {
 	var start string
 	flag.StringVar(&start, "start", "", "start time(included),eg:2018-4-1")
@@ -47,7 +52,15 @@ func main() {
 	var forceRefresh bool
 	flag.BoolVar(&forceRefresh, "force-refresh", false, "Force to refresh details")
 
+	var version bool
+	flag.BoolVar(&version, "version", false, "Show version")
+
 	flag.Parse()
+
+	if version {
+		log.Printf("MyBus:\n	Version:%s\n	Compile:%s\n", Version, Compile)
+		return
+	}
 
 	var err error
 	var starttm, endtm time.Time
