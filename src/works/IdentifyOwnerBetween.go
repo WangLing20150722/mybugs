@@ -19,6 +19,7 @@ type IssueOwner struct {
 	Summary         string
 	Status          string
 	LastModify      string
+	LastModifyTime  time.Time
 	LastAssignOutTo string
 	LastFix         string
 	InTime          time.Time //首次分入时间
@@ -53,8 +54,15 @@ func IdentifyOwnerBetween(start, end time.Time, shortOnwers *list.List) (*list.L
 	retList := list.New()
 	for _, issue := range issues {
 		owner, err := identifyOwnerOne(issue, shortOnwers)
+
 		if err == nil && owner.LastModify != "" {
-			retList.PushBack(owner)
+			fmtModify, _ := utils.FormatTime2Day(owner.LastModifyTime)
+
+			if !fmtModify.Before(startDay) && !fmtModify.After(endDay) {
+				retList.PushBack(owner)
+			} else {
+				log.Printf("IdentifyOwnerBetween %d issues out of date:+%s\n", issue.Id, owner.LastModifyTime)
+			}
 		}
 	}
 
@@ -112,6 +120,7 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 			//LastModify
 			if isInOwners(shortOnwers, modify.Username) {
 				owner.LastModify = modify.Username
+				owner.LastModifyTime = modify.DateModified
 			}
 
 			//LastAssignOutTo

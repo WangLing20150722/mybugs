@@ -24,6 +24,7 @@ func IssueOwnerList2Excel(l *list.List, file string) error {
 	xlsx.SetCellValue(defaultSheetName, "H1", "LastFix")
 	xlsx.SetCellValue(defaultSheetName, "I1", "FirstInTime")
 	xlsx.SetCellValue(defaultSheetName, "J1", "LastOutTime")
+	xlsx.SetCellValue(defaultSheetName, "K1", "LastModifyTime")
 
 	line := 2
 	for iter := l.Front(); iter != nil; iter = iter.Next() {
@@ -46,6 +47,7 @@ func IssueOwnerList2Excel(l *list.List, file string) error {
 
 		xlsx.SetCellValue(defaultSheetName, "I"+strconv.Itoa(line), issue.InTime.Format("2006-01-02 15:04:05"))
 		xlsx.SetCellValue(defaultSheetName, "J"+strconv.Itoa(line), issue.OutTime.Format("2006-01-02 15:04:05"))
+		xlsx.SetCellValue(defaultSheetName, "K"+strconv.Itoa(line), issue.LastModifyTime.Format("2006-01-02 15:04:05"))
 
 		line++
 	}
