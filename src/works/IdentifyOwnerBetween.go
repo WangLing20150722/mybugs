@@ -102,6 +102,8 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 
 		changeReg := regexp.MustCompile(`=>(.*)`)
 
+		owneIssue := false
+
 		for _, modify := range history {
 			if DEBUG {
 				log.Printf("	%s:%s	%s\n", modify.Username, modify.Field, modify.Change)
@@ -123,14 +125,16 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 					newOwner := match[1]
 
 					if isInOwners(shortOnwers, newOwner) { //分入
+						owneIssue = true
 						owner.LastAssignOutTo = ""
 						if owner.InTime.IsZero() {
 							owner.InTime = modify.DateModified
 						}
 					} else { //分出
-						if owner.LastAssignOutTo == "" { //只有在分入状态才分出
+						if owneIssue { //只有在分入状态才分出
 							owner.LastAssignOutTo = newOwner
 							owner.OutTime = modify.DateModified
+							owneIssue = false
 						}
 					}
 
