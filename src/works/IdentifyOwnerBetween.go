@@ -24,6 +24,7 @@ type IssueOwner struct {
 	LastFix         string
 	InTime          time.Time //首次分入时间
 	OutTime         time.Time //分出或者解决时间
+	ModifiedInRange bool      //在指定时间范围内，是否有修改过这个问题
 }
 
 func IdentifyOwnerBetween(start, end time.Time, shortOnwers *list.List) (*list.List, error) {
@@ -53,16 +54,10 @@ func IdentifyOwnerBetween(start, end time.Time, shortOnwers *list.List) (*list.L
 
 	retList := list.New()
 	for _, issue := range issues {
-		owner, err := identifyOwnerOne(issue, shortOnwers)
+		owner, err := identifyOwnerOne(issue, &startDay, &endDay, shortOnwers)
 
-		if err == nil && owner.LastModify != "" {
-			fmtModify, _ := utils.FormatTime2Day(owner.LastModifyTime)
-
-			if !fmtModify.Before(startDay) && !fmtModify.After(endDay) {
-				retList.PushBack(owner)
-			} else {
-				log.Printf("IdentifyOwnerBetween %d issues out of date:+%s\n", issue.Id, owner.LastModifyTime)
-			}
+		if err == nil && owner.LastModify != "" && owner.ModifiedInRange {
+			retList.PushBack(owner)
 		}
 	}
 
@@ -76,10 +71,10 @@ func IdentifyOwnerOne(id int64, shortOnwers *list.List) (*IssueOwner, error) {
 		return nil, err
 	}
 
-	return identifyOwnerOne(issue, shortOnwers)
+	return identifyOwnerOne(issue, nil, nil, shortOnwers)
 }
 
-func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner, error) {
+func identifyOwnerOne(issue *mantis.Issue, startDay, endDay *time.Time, shortOnwers *list.List) (*IssueOwner, error) {
 	var err error
 
 	var detail *mantis.IssueDetail
@@ -95,6 +90,7 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 		owner.Level = issue.Level
 		owner.Status = issue.Status
 		owner.Summary = issue.Summary
+		owner.ModifiedInRange = false
 
 		if DEBUG {
 			log.Printf("Issue History [%d]:", owner.Id)
@@ -121,6 +117,14 @@ func identifyOwnerOne(issue *mantis.Issue, shortOnwers *list.List) (*IssueOwner,
 			if isInOwners(shortOnwers, modify.Username) {
 				owner.LastModify = modify.Username
 				owner.LastModifyTime = modify.DateModified
+
+				if !owner.ModifiedInRange && startDay != nil && endDay != nil {
+					fmtModify, _ := utils.FormatTime2Day(owner.LastModifyTime)
+
+					if !fmtModify.Before(*startDay) && !fmtModify.After(*endDay) {
+						owner.ModifiedInRange = true
+					}
+				}
 			}
 
 			//LastAssignOutTo
