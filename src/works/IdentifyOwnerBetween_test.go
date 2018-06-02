@@ -14,8 +14,8 @@ func init() {
 }
 
 func TestIdentifyOwnerBetweenOneDay(t *testing.T) {
-	startday, _ := time.Parse("2006-01-02", "2018-04-01")
-	endday, _ := time.Parse("2006-01-02", "2018-04-02")
+	startday, _ := time.Parse("2006-01-02", "2018-03-30")
+	endday, _ := time.Parse("2006-01-02", "2018-04-01")
 
 	l, err := works.IdentifyOwnerBetween(startday, endday, getShortNameList())
 	if err != nil {

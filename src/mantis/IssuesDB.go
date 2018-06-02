@@ -66,7 +66,7 @@ func EachList(start, end time.Time) ([]*Issue, error) {
 	}
 
 	var Issues []*Issue
-	s_db.Find(&Issues, "Updated >= ? AND Updated <= ?", start.Format("2006-01-02"), end.Format("2006-01-02"))
+	s_db.Find(&Issues, "date_submitted <= ? AND Updated >= ?", end.Format("2006-01-02"), start.Format("2006-01-02"))
 	return Issues, nil
 }
 
