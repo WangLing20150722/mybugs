@@ -2,9 +2,9 @@ package works
 
 import (
 	"log"
-	"mantis"
+	"../mantis"
 	"time"
-	"utils"
+	"../utils"
 )
 
 var DEBUG = false

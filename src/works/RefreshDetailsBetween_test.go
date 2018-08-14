@@ -1,10 +1,10 @@
 package works
 
 import (
-	"mantis"
+	"../mantis"
 	"testing"
 	"time"
-	"utils"
+	"../utils"
 )
 
 func TestRefreshDetailsBetweenOld(t *testing.T) {

@@ -21,7 +21,7 @@ type IssueHistory struct {
 	DateModified time.Time
 	Username     string
 	Field        string
-	Change       string
+	Change       string //状态改变
 }
 
 func GetIssueDetail(id int64) (*IssueDetail, error) {

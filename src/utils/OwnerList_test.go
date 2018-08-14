@@ -3,7 +3,7 @@ package utils_test
 import (
 	"log"
 	"testing"
-	"utils"
+	"../utils"
 )
 
 func TestGenerateNameList(t *testing.T) {

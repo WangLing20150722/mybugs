@@ -2,7 +2,7 @@ package mantis_test
 
 import (
 	"container/list"
-	"mantis"
+	"../mantis"
 	"testing"
 	"time"
 )

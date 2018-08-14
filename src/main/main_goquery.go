@@ -4,10 +4,10 @@ import (
 	"container/list"
 	"flag"
 	"log"
-	"mantis"
+	"../mantis"
 	"time"
-	"utils"
-	"works"
+	"../utils"
+	"../works"
 )
 
 var (
@@ -29,7 +29,7 @@ func main() {
 	flag.StringVar(&pid, "pid", "0", "Set project id, default:0,all projects")
 
 	var startPage int
-	flag.IntVar(&startPage, "startpage", 0, "begin refresh from startpage, if it`s too big, some issues may lost but if too small, more times will be wasted. default:0")
+	flag.IntVar(&startPage, "startpage", 0, "begin refresh from startpage, if it`s too big, some allIssues may lost but if too small, more times will be wasted. default:0")
 
 	var detailAction bool
 	flag.BoolVar(&detailAction, "detail", true, "Update issue details")
@@ -37,11 +37,14 @@ func main() {
 	var identifyAction bool
 	flag.BoolVar(&identifyAction, "identify", true, "Identify issue owner")
 
+	var failedAction bool
+	flag.BoolVar(&failedAction,"failed",true,"Failed issue")
+
 	var ownerFile string
 	flag.StringVar(&ownerFile, "owner-config", "", "Json file path of onwer file")
 
 	var outfile string
-	flag.StringVar(&outfile, "output", "issues.xlsx", "Output excel file for identify")
+	flag.StringVar(&outfile, "output", "allIssues.xlsx", "Output excel file for identify")
 
 	var username string
 	flag.StringVar(&username, "username", "", "Username of bug system(mantis)")
@@ -129,6 +132,7 @@ func main() {
 		}
 	}
 
+	var allIssues *list.List
 	if identifyAction && l != nil {
 		issueList, err := works.IdentifyOwnerBetween(starttm, endtm, l)
 		if err != nil {
@@ -136,11 +140,37 @@ func main() {
 			return
 		}
 
-		err = works.IssueOwnerList2Excel(issueList, outfile)
+		//用于操作failed
+		allIssues = list.New()
+		allIssues.PushBackList(issueList)
+
+		err = works.IssueOwnerList2Excel(issueList, outfile,"All_issues")
 		if err != nil {
 			log.Printf("identify write error:%v\n", err)
 			return
 		}
+	}
+
+	if failedAction && allIssues != nil{
+		failedIssues := list.New()
+		for e := allIssues.Front(); e != nil;e = e.Next()  {
+			failedIssue := e.Value.(*works.IssueOwner)
+
+
+			if failedIssue.Failed{
+				failedIssues.PushBack(failedIssue)
+			}
+		}
+
+		log.Println("failed allIssues length = ",failedIssues.Len())
+
+		//works.IssueOwnerList2Excel(failedIssues,outfile,"failed_Issues")
+		works.IssueOwnerFailedList2Excel(failedIssues,outfile,"failed_Issues")
+		if err != nil {
+			log.Printf("failedIssues write error:%v\n", err)
+			return
+		}
+
 	}
 
 	log.Println("Done!")

@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"mantis"
+	"../mantis"
 	"regexp"
 	"strings"
 	"time"
-	"utils"
+	"../utils"
 )
 
 type IssueOwner struct {
@@ -25,6 +25,7 @@ type IssueOwner struct {
 	InTime          time.Time //首次分入时间
 	OutTime         time.Time //分出或者解决时间
 	ModifiedInRange bool      //在指定时间范围内，是否有修改过这个问题
+	Failed          bool
 }
 
 func IdentifyOwnerBetween(start, end time.Time, shortOnwers *list.List) (*list.List, error) {
@@ -97,6 +98,7 @@ func identifyOwnerOne(issue *mantis.Issue, startDay, endDay *time.Time, shortOnw
 		}
 
 		var history []mantis.IssueHistory
+		//histroy 字段json解析成IssueHistory对象
 		err = json.Unmarshal([]byte(detail.History), &history)
 		if err != nil {
 			err = fmt.Errorf("Issue [%d] History error: %s", issue.Id, detail.History)
@@ -104,9 +106,13 @@ func identifyOwnerOne(issue *mantis.Issue, startDay, endDay *time.Time, shortOnw
 			return nil, err
 		}
 
+		//正则表达式匹配
 		changeReg := regexp.MustCompile(`=>(.*)`)
 
+		//changeFailed := regexp.MustCompile(`=\u003eFailed`)
+
 		owneIssue := false
+		ownerRelease := false
 
 		for _, modify := range history {
 			if DEBUG {
@@ -172,7 +178,22 @@ func identifyOwnerOne(issue *mantis.Issue, startDay, endDay *time.Time, shortOnw
 							owner.OutTime = modify.DateModified
 						}
 					}
+
+					if match [1] == "Readytorelease" {
+						if isInOwners(shortOnwers,modify.Username){
+							ownerRelease = true
+						}else{
+							ownerRelease = false
+						}
+					}
+
 				}
+			}
+			//list to owner
+			//直接failed 给owner才是真的failed
+			if strings.Contains(modify.Change,"=\u003eFailed") && ownerRelease{
+				log.Println("identifyOwnerOne failed ")
+				owner.Failed = true
 			}
 		}
 

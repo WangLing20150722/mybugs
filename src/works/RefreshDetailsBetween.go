@@ -2,9 +2,9 @@ package works
 
 import (
 	"log"
-	"mantis"
+	"../mantis"
 	"time"
-	"utils"
+	"../utils"
 )
 
 func RefreshDetailsBetween(start, end time.Time, forceRefresh bool) error {
@@ -72,9 +72,14 @@ func RefreshDetailsBetween(start, end time.Time, forceRefresh bool) error {
 
 }
 
+const sleepTime,maxTryTime = 30,5
 func doRefreshDetail(id int64) error {
 	var err error
-	for i := 0; i < 3; i++ {
+	var tryCount = 0
+
+
+
+	LOOP:for i := 0; i < 3; i++ {
 		var detail *mantis.IssueDetail
 		detail, err = mantis.GetIssueDetail(id)
 
@@ -86,5 +91,17 @@ func doRefreshDetail(id int64) error {
 		return nil
 	}
 
+	if tryCount<5{
+		tryCount ++
+		time.Sleep(time.Duration(tryCount*sleepTime)*time.Second)
+		goto LOOP
+	}
+
 	return err
 }
+
+//func  doDetail(id int64)error  {
+//
+//}
+
+

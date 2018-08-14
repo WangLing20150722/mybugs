@@ -3,10 +3,10 @@ package works_test
 import (
 	"container/list"
 	"fmt"
-	"mantis"
+	"../mantis"
 	"testing"
 	"time"
-	"works"
+	"../works"
 )
 
 func init() {

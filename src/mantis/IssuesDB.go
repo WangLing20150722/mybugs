@@ -60,6 +60,7 @@ func SaveList(l *list.List) error {
 	return nil
 }
 
+//查询issues
 func EachList(start, end time.Time) ([]*Issue, error) {
 	if s_db == nil {
 		return nil, fmt.Errorf("Db not Opened")

@@ -2,9 +2,9 @@ package mantis_test
 
 import (
 	"log"
-	"mantis"
+	"../mantis"
 	"testing"
-	"utils"
+	"../utils"
 )
 
 func TestListBugsOrder(t *testing.T) {

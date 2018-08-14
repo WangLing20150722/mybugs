@@ -3,7 +3,7 @@ package works
 import (
 	"testing"
 	"time"
-	"utils"
+	"../utils"
 )
 
 func TestRefreshListBetween(t *testing.T) {
